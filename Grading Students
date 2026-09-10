@@ -1,0 +1,21 @@
+    public static List<Integer> gradingStudents(List<Integer> grades) {
+        List<Integer> roundedGrades = new ArrayList<>();
+        
+        for (int grade : grades) {
+            if (grade < 38) {
+                // No rounding for failing grades below 38
+                roundedGrades.add(grade);
+            } else {
+                int nextMultipleOfFive = ((grade / 5) + 1) * 5;
+                if (nextMultipleOfFive - grade < 3) {
+                    // Round up if the difference is less than 3
+                    roundedGrades.add(nextMultipleOfFive);
+                } else {
+                    // Otherwise, keep the original grade
+                    roundedGrades.add(grade);
+                }
+            }
+        }
+        
+        return roundedGrades;
+    }
